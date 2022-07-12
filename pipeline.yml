@@ -4,6 +4,9 @@ trigger:
       - main
       - trigger
 
+variables:
+  - group: PoC
+  
 pool:
   vmImage: "ubuntu-latest"
 
@@ -23,6 +26,7 @@ stages:
               workingDirectory: "$(Build.SourcesDirectory)/"
               script: |              
                 echo "Hi this 2nd task in First job of first step"
+                echo "Variables: $(var1) $(var2)"
 
   - stage: Two
     dependsOn: First
