@@ -27,7 +27,7 @@ stages:
   - stage: Two
     dependsOn: First
     jobs:
-      - job: "Two"
+      - deployment: "Two"
         environment: this-env-needs-approval
         displayName: "First Job in stage Two"
         steps:
