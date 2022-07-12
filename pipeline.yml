@@ -30,11 +30,14 @@ stages:
       - deployment: "Two"
         environment: this-env-needs-approval
         displayName: "First Job in stage Two"
-        steps:
-          - task: PowerShell@2
-            name: JobTwo
-            displayName: "Get the version name for LeapDNA.Custom.Utilities"
-            inputs:
-              targetType: inline
-              script: |          
-                echo "Second Stage First Job First step"
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: PowerShell@2
+                  name: JobTwo
+                  displayName: "Get the version name for LeapDNA.Custom.Utilities"
+                  inputs:
+                    targetType: inline
+                    script: |          
+                      echo "Second Stage First Job First step"
