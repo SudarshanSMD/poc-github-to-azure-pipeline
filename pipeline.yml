@@ -28,6 +28,7 @@ stages:
     dependsOn: First
     jobs:
       - job: "Two"
+        environment: this-env-needs-approval
         displayName: "First Job in stage Two"
         steps:
           - task: PowerShell@2
