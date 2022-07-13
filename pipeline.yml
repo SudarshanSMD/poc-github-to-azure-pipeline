@@ -60,4 +60,5 @@ stages:
               command: publish
               vstsFeedPublish: '$(feedname)'
               publishDirectory: '$(Build.SourcesDirectory)/publish'
-              versionOption: Next patch
+              versionOption: custom
+              versionPublish: 0.0.1
