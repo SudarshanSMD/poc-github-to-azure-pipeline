@@ -49,7 +49,7 @@ stages:
   - stage: Publish
     dependsOn: Two
     jobs:
-      - job: "Publish Artifact"
+      - job: "Publish_Artifact"
         displayName: "Publish to Artifact Feed"
         steps:
           - checkout: self
