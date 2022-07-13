@@ -47,16 +47,17 @@ stages:
                       echo "Second Stage First Job First step"
 
   - stage: Publish
-      jobs:
-        - job: "Publish Artifact"
-          displayName: "Publish to Artifact Feed"
-          steps:
-            - checkout: self
+    dependsOn: Two
+    jobs:
+      - job: "Publish Artifact"
+        displayName: "Publish to Artifact Feed"
+        steps:
+          - checkout: self
 
-            - task: UniversalPackages@0
-              displayName: 'Universal publish'
-              inputs:
-                command: publish
-                vstsFeedPublish: '$(feedname)'
-                publishDirectory: '$(Build.SourcesDirectory)/publish'
-                versionOption: Next patch
+          - task: UniversalPackages@0
+            displayName: 'Universal publish'
+            inputs:
+              command: publish
+              vstsFeedPublish: '$(feedname)'
+              publishDirectory: '$(Build.SourcesDirectory)/publish'
+              versionOption: Next patch
